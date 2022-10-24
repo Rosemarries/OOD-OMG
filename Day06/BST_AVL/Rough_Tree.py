@@ -76,15 +76,13 @@ class Tree:
                 elif now.left:
                     minus = now.left.data
                     now.left.data -= minus
+                else:
+                    minus = now.data
                 now.data = minus
             if now.left:
                 queue.append(now.left)
             if now.right:
                 queue.append(now.right)
-            # print(f"l = {level} | ", end="")
-            # for e in queue:
-            #     print([e.level, e.data], end=" ")
-            # print()
 
 T = Tree()
 inp = input("Enter Input : ").split("/")
@@ -97,10 +95,6 @@ else:
         T.add(0, i)
     for i in range(len(listed)):
         T.add(listed[i], i+total//2)
-    # T.printTree(T.root)
-    # print("-"*30)
     for i in range(T.max_level-1):
         T.delete(T.max_level-i-2)
-    # T.printTree(T.root)
-    # print("-"*30)
     print(T.sum())
